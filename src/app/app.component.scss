@@ -37,6 +37,8 @@ $background-image: "https://images.unsplash.com/photo-1691437196656-a886a056d1dd
 .content-section{
   //background-color: cadetblue;
   flex-grow: 1;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .bottom-section{
