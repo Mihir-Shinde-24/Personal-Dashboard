@@ -8,6 +8,7 @@ import { BookmarksComponent } from './components/bookmarks/bookmarks.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { BookmarkTileComponent } from './components/bookmarks/bookmark-tile/bookmark-tile.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BookmarkTileComponent } from './components/bookmarks/bookmark-tile/book
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

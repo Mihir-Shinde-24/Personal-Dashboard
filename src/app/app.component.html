@@ -5,8 +5,8 @@
     <h2>1 January 2020</h2>
   </div>
 
-  <div class="content-section">
-    <router-outlet></router-outlet>
+  <div class="content-section" [@routeAnim]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
   </div>
 
   <div class="bottom-section">
