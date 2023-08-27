@@ -1,0 +1,38 @@
+// Colours
+$lightest-purple: #e1e2ed;
+$lightest-gray: #f5f5f5;
+$white: white;
+
+.app-wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: $lightest-purple;
+}
+
+.top-section{
+  background-color: aquamarine;
+  text-align: center;
+  padding: 100px 0;
+  h1{
+    font-size: 120px;
+    font-weight: bold;
+    color: $lightest-gray;
+    text-shadow: 0 1px 7px rgba(black,0.1);
+  }
+
+  h2{
+    font-size: 28px;
+    color: $white;
+    text-shadow: 0 1px 4px rgba(black,0.1);
+  }
+}
+
+.content-section{
+  background-color: cadetblue;
+  flex-grow: 1;
+}
+
+.bottom-section{
+  background-color: coral;
+}
