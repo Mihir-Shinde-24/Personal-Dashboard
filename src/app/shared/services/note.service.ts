@@ -6,11 +6,6 @@ import {Note} from "../models/note.model";
 })
 export class NoteService {
 
-  // notes: Note[] = [
-  //   new Note('First Title', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere ipsam maiores mollitia ratione tenetur, voluptatum!'),
-  //   new Note('Second Title', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere ipsam maiores mollitia ratione tenetur, voluptatum!')
-  // ];
-
   notes!: Note[];
 
   constructor() {
