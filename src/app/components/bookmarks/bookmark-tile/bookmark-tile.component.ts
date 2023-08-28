@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Bookmark} from "../../../shared/models/bookmark.model";
 
 @Component({
   selector: 'app-bookmark-tile',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class BookmarkTileComponent {
 
+  @Input('bookmark') bookmark!:Bookmark;
 }

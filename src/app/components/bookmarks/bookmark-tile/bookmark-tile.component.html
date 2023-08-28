@@ -1,4 +1,4 @@
 <div class="bookmark-tile">
-  <img src="http://wikipedia.org/favicon.ico" alt="">
-  <p class="tile-text">Google</p>
+  <img [src]="bookmark.url.origin+'/favicon.ico'" alt="">
+  <p class="tile-text">{{ bookmark.name}}</p>
 </div>
