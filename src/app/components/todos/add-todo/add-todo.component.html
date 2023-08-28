@@ -10,7 +10,6 @@
 
             <div class="btns-container ">
                 <a class="btn" [routerLink]="'/todos'">Cancel</a>
-                <button type="button" class="btn" *ngIf="idControl?.value" (click)="deleteTodo()">Delete</button>
                 <button type="submit" class="btn align-end">{{ idControl?.value ? 'Update': 'Create'}}</button>
             </div>
         </form>

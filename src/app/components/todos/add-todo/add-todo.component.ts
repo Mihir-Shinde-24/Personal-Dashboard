@@ -55,10 +55,6 @@ export class AddTodoComponent implements  OnInit{
   get textControl(){return this.addTodoReactiveForm.get('text')};
   get completedControl(){return this.addTodoReactiveForm.get('completed')};
 
-  deleteTodo() {
-
-  }
-
   onFormSubmit() {
     this.addTodoReactiveForm.markAllAsTouched();
     if(this.addTodoReactiveForm.valid){
