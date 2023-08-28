@@ -4,6 +4,7 @@ import {BookmarksComponent} from "./components/bookmarks/bookmarks.component";
 import {TodosComponent} from "./components/todos/todos.component";
 import {NotesComponent} from "./components/notes/notes.component";
 import {AddNotesComponent} from "./components/notes/add-notes/add-notes.component";
+import {UnsavedChangesGuard} from "./shared/route-gaurds/unsaved-changes.guard";
 
 const routes: Routes = [
   {
@@ -32,7 +33,13 @@ const routes: Routes = [
       },
       {
         path: 'add',
-        component: AddNotesComponent
+        component: AddNotesComponent,
+        canDeactivate:[UnsavedChangesGuard],
+      },
+      {
+        path: 'edit/:id',
+        component: AddNotesComponent,
+        canDeactivate:[UnsavedChangesGuard],
       },
     ]
   },

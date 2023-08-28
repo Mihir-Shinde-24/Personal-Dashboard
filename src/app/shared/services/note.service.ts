@@ -6,12 +6,16 @@ import {Note} from "../models/note.model";
 })
 export class NoteService {
 
-  notes: Note[] = [
-    new Note('First Title', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere ipsam maiores mollitia ratione tenetur, voluptatum!'),
-    new Note('Second Title', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere ipsam maiores mollitia ratione tenetur, voluptatum!')
-  ];
+  // notes: Note[] = [
+  //   new Note('First Title', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere ipsam maiores mollitia ratione tenetur, voluptatum!'),
+  //   new Note('Second Title', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere ipsam maiores mollitia ratione tenetur, voluptatum!')
+  // ];
 
-  constructor() { }
+  notes!: Note[];
+
+  constructor() {
+    this.notes = [];
+  }
 
   getNotes():Note[]{
     return this.notes;
@@ -28,7 +32,7 @@ export class NoteService {
   updateNote(id:string, updatedFields: Partial<Note>){
     const note = this.getNote(id);
     if(note){
-      Object.assign(note,updatedFields)
+      Object.assign(note,updatedFields);
     }
   }
 
