@@ -1,9 +1,10 @@
 <div class="todos-wrapper">
     <div class="container">
-        <app-todo-item *ngFor="let todo of todos"
-                       [todo]="todo"
-                       (click)="toggleTodo(todo)"
-
+        <app-todo-item
+                @todoItemAnim
+                *ngFor="let todo of todos"
+                [todo]="todo"
+                (click)="toggleTodo(todo)"
         ></app-todo-item>
 
         <div class="btns-container btns-centered">
