@@ -99,6 +99,13 @@ a{
 
 .form-field{
   margin-bottom: 20px;
+
+  label.form-label{
+    margin-bottom: 5px;
+    display :block;
+    font-weight: 600;
+    color:rgba(black,0.8);
+  }
 }
 .textbox,.textarea{
   font-size: 18px;

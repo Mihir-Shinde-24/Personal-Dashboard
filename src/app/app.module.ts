@@ -14,6 +14,7 @@ import { NoteCardComponent } from './components/notes/note-card/note-card.compon
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { TodoItemComponent } from './components/todos/todo-item/todo-item.component';
 import { AddTodoComponent } from './components/todos/add-todo/add-todo.component';
+import { AddBookmarkComponent } from './components/bookmarks/add-bookmark/add-bookmark.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AddTodoComponent } from './components/todos/add-todo/add-todo.component
     AddNotesComponent,
     NoteCardComponent,
     TodoItemComponent,
-    AddTodoComponent
+    AddTodoComponent,
+    AddBookmarkComponent
   ],
   imports: [
     BrowserModule,

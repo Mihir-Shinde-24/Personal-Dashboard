@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="add-bookmark-wrapper has-blurred-white-bg">
+    <h2 class="is-bold">{{ idControl?.value ? 'Edit': 'New'}} Bookmark</h2>
+    <form (ngSubmit)="onFormSubmit()" [formGroup]="addBookmarkReactiveForm" ngNativeValidate>
+      <div class="form-field">
+        <label class="form-label">Name</label>
+        <input class="textbox" type="text" placeholder="e.g. Wikipedia" formControlName="name">
+      </div>
+
+      <div class="form-field">
+        <label class="form-label">URL</label>
+        <input class="textbox" type="url" placeholder="e.g. https://www.wikipedia.org/" formControlName="url">
+      </div>
+
+      <div class="btns-container ">
+        <a class="btn" [routerLink]="'/bookmarks'">Cancel</a>
+        <button type="submit" class="btn align-end">{{ idControl?.value ? 'Update': 'Create'}}</button>
+      </div>
+    </form>
+  </div>
+</div>

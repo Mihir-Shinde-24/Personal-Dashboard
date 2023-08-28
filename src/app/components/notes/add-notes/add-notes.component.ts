@@ -34,7 +34,7 @@ export class AddNotesComponent implements OnInit,IDeactivateComponent{
   }
 
   patchNoteForm(id:string){
-    const note = this.noteService.getNote(id);
+    const note = this.noteService.get(id);
     if(note){
       this.addNoteReactiveForm.setValue(note);
     }
@@ -57,10 +57,10 @@ export class AddNotesComponent implements OnInit,IDeactivateComponent{
       if(!this.id){
         const note = new Note(this.addNoteReactiveForm.value.title,this.addNoteReactiveForm.value.content);
         // console.log(note);
-        this.noteService.addNote(note);
+        this.noteService.add(note);
       }
       else{
-          this.noteService.updateNote(this.id,this.addNoteReactiveForm.value);
+          this.noteService.update(this.id,this.addNoteReactiveForm.value);
       }
       this.addNoteReactiveForm.reset();
       this.router.navigateByUrl('/notes');
@@ -68,7 +68,8 @@ export class AddNotesComponent implements OnInit,IDeactivateComponent{
   }
 
   canExit(){
-    if(this.idControl?.value || this.titleControl?.value || this.contentControl?.value){
+    if(!this.addNoteReactiveForm.touched) return true;
+    if(this.titleControl?.value || this.contentControl?.value){
       return confirm("You can unsaved changes. Do you want to discard changes?")
     }
     return true;
@@ -79,7 +80,7 @@ export class AddNotesComponent implements OnInit,IDeactivateComponent{
   get contentControl(){return this.addNoteReactiveForm.get('content')}
 
   deleteNote() {
-    this.noteService.deleteNote(this.id);
+    this.noteService.delete(this.id);
     this.addNoteReactiveForm.reset();
     this.router.navigateByUrl('/notes');
   }

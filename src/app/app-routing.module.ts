@@ -6,14 +6,30 @@ import {NotesComponent} from "./components/notes/notes.component";
 import {AddNotesComponent} from "./components/notes/add-notes/add-notes.component";
 import {UnsavedChangesGuard} from "./shared/route-gaurds/unsaved-changes.guard";
 import {AddTodoComponent} from "./components/todos/add-todo/add-todo.component";
+import {AddBookmarkComponent} from "./components/bookmarks/add-bookmark/add-bookmark.component";
 
 const routes: Routes = [
   {
     path: 'bookmarks',
-    component: BookmarksComponent,
-    data:{
-      tab: 1
-    }
+    children:[
+      {
+        path: '',
+        component: BookmarksComponent,
+        data:{
+          tab: 1
+        }
+      },
+      {
+        path: 'add',
+        component: AddBookmarkComponent,
+        // canDeactivate:[UnsavedChangesGuard],
+      },
+      {
+        path: 'edit/:id',
+        component: AddBookmarkComponent,
+        // canDeactivate:[UnsavedChangesGuard],
+      },
+    ]
   },
   {
     path: 'todos',
@@ -28,12 +44,12 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddTodoComponent,
-        // canDeactivate:[UnsavedChangesGuard],
+        canDeactivate:[UnsavedChangesGuard],
       },
       {
         path: 'edit/:id',
         component: AddTodoComponent,
-        // canDeactivate:[UnsavedChangesGuard],
+        canDeactivate:[UnsavedChangesGuard],
       },
     ]
   },

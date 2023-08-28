@@ -15,7 +15,7 @@ export class TodoItemComponent  {
   constructor(private todoService:TodoService, private router:Router) {}
 
   deleteTodo() {
-      this.todoService.deleteTodo(this.todo.id);
+      this.todoService.delete(this.todo.id);
       this.router.navigateByUrl('/todos');
   }
 

@@ -30,11 +30,11 @@ export class TodosComponent {
   }
 
   getTodos(){
-    this.todos = this.todoService.getTodos();
+    this.todos = this.todoService.getAll();
   }
 
   toggleTodo(todo: Todo) {
-    this.todoService.updateTodo(todo.id,{
+    this.todoService.update(todo.id,{
       completed: !todo.completed
     });
   }

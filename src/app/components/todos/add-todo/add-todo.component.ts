@@ -4,13 +4,15 @@ import {WhiteSpaceValidator} from "../../../shared/custom-validators/WhiteSpaceV
 import {Todo} from "../../../shared/models/todo.model";
 import {TodoService} from "../../../shared/services/todo.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {IDeactivateComponent} from "../../../shared/interfaces/IDeactivateComponent";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-add-todo',
   templateUrl: './add-todo.component.html',
   styleUrls: ['./add-todo.component.scss']
 })
-export class AddTodoComponent implements  OnInit{
+export class AddTodoComponent implements  OnInit,IDeactivateComponent{
 
   id!:string;
   addTodoReactiveForm!:FormGroup;
@@ -41,7 +43,7 @@ export class AddTodoComponent implements  OnInit{
   }
 
   patchTodoForm(id:string){
-    const todo = this.todoService.getTodo(id);
+    const todo = this.todoService.get(id);
     if(todo){
       this.addTodoReactiveForm.setValue(todo);
     }
@@ -51,23 +53,33 @@ export class AddTodoComponent implements  OnInit{
   }
 
 
-  get idControl(){return this.addTodoReactiveForm.get('id')};
-  get textControl(){return this.addTodoReactiveForm.get('text')};
-  get completedControl(){return this.addTodoReactiveForm.get('completed')};
-
   onFormSubmit() {
     this.addTodoReactiveForm.markAllAsTouched();
     if(this.addTodoReactiveForm.valid){
       if(!this.id){
         const todo = new Todo(this.addTodoReactiveForm.value.text);
         console.log(todo);
-        this.todoService.addTodo(todo);
+        this.todoService.add(todo);
       }
       else{
-        this.todoService.updateTodo(this.id,this.addTodoReactiveForm.value);
+        this.todoService.update(this.id,this.addTodoReactiveForm.value);
       }
       this.addTodoReactiveForm.reset();
       this.router.navigateByUrl('/todos');
     }
   }
+
+  canExit(): boolean | Observable<boolean> | Promise<boolean> {
+    if(!this.addTodoReactiveForm.touched) return true;
+    if(this.textControl?.value ){
+      return confirm("You can unsaved changes. Do you want to discard changes?")
+    }
+    return true;
+  }
+
+
+  get idControl(){return this.addTodoReactiveForm.get('id')};
+  get textControl(){return this.addTodoReactiveForm.get('text')};
+
 }
+

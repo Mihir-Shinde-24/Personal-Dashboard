@@ -18,7 +18,7 @@ export class NotesComponent implements OnInit{
   }
 
   getNotes(){
-    this.notes = this.noteSerice.getNotes();
+    this.notes = this.noteSerice.getAll();
   }
 
 }

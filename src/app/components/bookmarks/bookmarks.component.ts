@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Bookmark} from "../../shared/models/bookmark.model";
-import {DataService} from "../../shared/services/data.service";
+import {BookmarkService} from "../../shared/services/bookmark.service";
 
 @Component({
   selector: 'app-bookmarks',
@@ -10,19 +10,14 @@ import {DataService} from "../../shared/services/data.service";
 export class BookmarksComponent implements  OnInit{
 
   bookmarks!: Bookmark[];
-  constructor(private bookmarkService:DataService<Bookmark>) {}
+  constructor(private bookmarkService:BookmarkService) {}
 
   ngOnInit(): void {
     this.getBookmarks();
   }
 
   getBookmarks(){
-    // this.bookmarks = this.bookmarkService.getAll();
-    this.bookmarks = [
-      new Bookmark("Google","https://www.google.com"),
-      new Bookmark("Wiki","https://www.wikipedia.org"),
-      new Bookmark("YT","https://www.youtube.com"),
-    ]
+    this.bookmarks = this.bookmarkService.getAll();
     console.log(this.bookmarks)
   }
 

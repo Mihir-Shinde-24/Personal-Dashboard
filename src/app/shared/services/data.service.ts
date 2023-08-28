@@ -10,7 +10,7 @@ export interface MayHaveId {
 })
 export class DataService<T extends MayHaveId> {
 
-  data!: T[];
+  data: T[] = [];
 
   getAll():T[]{
     return this.data;
