@@ -5,6 +5,7 @@ import {TodosComponent} from "./components/todos/todos.component";
 import {NotesComponent} from "./components/notes/notes.component";
 import {AddNotesComponent} from "./components/notes/add-notes/add-notes.component";
 import {UnsavedChangesGuard} from "./shared/route-gaurds/unsaved-changes.guard";
+import {AddTodoComponent} from "./components/todos/add-todo/add-todo.component";
 
 const routes: Routes = [
   {
@@ -16,10 +17,25 @@ const routes: Routes = [
   },
   {
     path: 'todos',
-    component: TodosComponent,
-    data:{
-      tab: 2
-    }
+    children:[
+      {
+        path: '',
+        component: TodosComponent,
+        data:{
+          tab: 2
+        }
+      },
+      {
+        path: 'add',
+        component: AddTodoComponent,
+        // canDeactivate:[UnsavedChangesGuard],
+      },
+      {
+        path: 'edit/:id',
+        component: AddTodoComponent,
+        // canDeactivate:[UnsavedChangesGuard],
+      },
+    ]
   },
   {
     path: 'notes',
