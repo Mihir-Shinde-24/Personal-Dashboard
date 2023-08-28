@@ -11,6 +11,7 @@ import { BookmarkTileComponent } from './components/bookmarks/bookmark-tile/book
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { AddNotesComponent } from './components/notes/add-notes/add-notes.component';
 import { NoteCardComponent } from './components/notes/note-card/note-card.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { NoteCardComponent } from './components/notes/note-card/note-card.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
