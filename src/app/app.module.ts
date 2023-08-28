@@ -12,6 +12,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { AddNotesComponent } from './components/notes/add-notes/add-notes.component';
 import { NoteCardComponent } from './components/notes/note-card/note-card.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { TodoItemComponent } from './components/todos/todo-item/todo-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     NotesComponent,
     BookmarkTileComponent,
     AddNotesComponent,
-    NoteCardComponent
+    NoteCardComponent,
+    TodoItemComponent
   ],
   imports: [
     BrowserModule,

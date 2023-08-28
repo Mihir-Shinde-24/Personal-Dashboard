@@ -6,12 +6,15 @@ import {Todo} from "../models/todo.model";
 })
 export class TodoService {
 
-  todos!:Todo[];
+  todos:Todo[] = [
+      new Todo("Complete your homework"),
+      new Todo("Go to Gym"),
+  ];
 
-  constructor() {
-    this.todos = [];
-  }
 
+  // constructor() {
+  //   this.todos = [];
+  // }
 
   getTodos():Todo[]{
     return this.todos;
@@ -37,5 +40,6 @@ export class TodoService {
     if(todoIndex == -1) return;
     this.todos.splice(todoIndex,1);
   }
+
 
 }

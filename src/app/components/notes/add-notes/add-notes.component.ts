@@ -52,7 +52,6 @@ export class AddNotesComponent implements OnInit,IDeactivateComponent{
   }
 
   onFormSubmit() {
-    console.log(this.addNoteReactiveForm)
     this.addNoteReactiveForm.markAllAsTouched();
     if(this.addNoteReactiveForm.valid){
       if(!this.id){
