@@ -63,7 +63,7 @@ export class AddNotesComponent implements OnInit,IDeactivateComponent{
 
       }
       else{
-          this.noteService.update(this.id,this.addNoteReactiveForm.value);
+        this.noteService.update(this.id,this.addNoteReactiveForm.value);
         this.notificationService.show("Note updated!")
 
       }

@@ -39,5 +39,10 @@ export class TodosComponent {
     });
   }
 
+  trackById(index:number, item:Todo){
+    return item.id;
+  }
+
+
 
 }

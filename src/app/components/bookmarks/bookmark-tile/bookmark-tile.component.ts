@@ -10,4 +10,8 @@ export class BookmarkTileComponent {
 
   @Input('bookmark') bookmark!:Bookmark;
   faviconError=false;
+
+  faviError() {
+    this.faviconError = true;
+  }
 }
