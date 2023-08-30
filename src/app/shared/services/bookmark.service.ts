@@ -8,11 +8,11 @@ import {DataService} from "./data.service";
 export class BookmarkService extends DataService<Bookmark>{
 
 
-  // override data: Bookmark[]= [
-  //   new Bookmark("Google","https://www.google.com"),
-  //   new Bookmark("Wiki","https://www.wikipedia.org"),
-  //   new Bookmark("YT","https://www.youtube.com"),
-  // ]
+  override data: Bookmark[]= [
+    new Bookmark("Google","https://www.google.com"),
+    new Bookmark("Wiki","https://www.wikipedia.org"),
+    new Bookmark("YT","https://www.youtube.com"),
+  ]
   // constructor() { }
   //
   // getBookmarks():Bookmark[]{

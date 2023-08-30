@@ -5,6 +5,7 @@ import {NoteService} from "../../../shared/services/note.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {WhiteSpaceValidator} from "../../../shared/custom-validators/WhiteSpaceValidator";
 import {IDeactivateComponent} from "../../../shared/interfaces/IDeactivateComponent";
+import {NotificationService} from "../../../shared/services/utility-service/notification.service";
 
 @Component({
   selector: 'app-add-notes',
@@ -16,7 +17,7 @@ export class AddNotesComponent implements OnInit,IDeactivateComponent{
   id!:string;
   addNoteReactiveForm!: FormGroup;
 
-  constructor(private fb:FormBuilder, private noteService:NoteService,private router:Router, private activatedRoute:ActivatedRoute) {}
+  constructor(private notificationService:NotificationService, private fb:FormBuilder, private noteService:NoteService,private router:Router, private activatedRoute:ActivatedRoute) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -58,9 +59,13 @@ export class AddNotesComponent implements OnInit,IDeactivateComponent{
         const note = new Note(this.addNoteReactiveForm.value.title,this.addNoteReactiveForm.value.content);
         // console.log(note);
         this.noteService.add(note);
+        this.notificationService.show("Note created!")
+
       }
       else{
           this.noteService.update(this.id,this.addNoteReactiveForm.value);
+        this.notificationService.show("Note updated!")
+
       }
       this.addNoteReactiveForm.reset();
       this.router.navigateByUrl('/notes');
@@ -83,5 +88,6 @@ export class AddNotesComponent implements OnInit,IDeactivateComponent{
     this.noteService.delete(this.id);
     this.addNoteReactiveForm.reset();
     this.router.navigateByUrl('/notes');
+    this.notificationService.show("Note deleted!")
   }
 }

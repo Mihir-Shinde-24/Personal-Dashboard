@@ -7,6 +7,7 @@ import {AddNotesComponent} from "./components/notes/add-notes/add-notes.componen
 import {UnsavedChangesGuard} from "./shared/route-gaurds/unsaved-changes.guard";
 import {AddTodoComponent} from "./components/todos/add-todo/add-todo.component";
 import {AddBookmarkComponent} from "./components/bookmarks/add-bookmark/add-bookmark.component";
+import {ManageBookmarksComponent} from "./components/bookmarks/manage-bookmarks/manage-bookmarks.component";
 
 const routes: Routes = [
   {
@@ -22,12 +23,23 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddBookmarkComponent,
-        // canDeactivate:[UnsavedChangesGuard],
+        canDeactivate:[UnsavedChangesGuard],
       },
       {
-        path: 'edit/:id',
-        component: AddBookmarkComponent,
-        // canDeactivate:[UnsavedChangesGuard],
+        path: 'manage',
+        children:[
+          {
+            path: '',
+            component: ManageBookmarksComponent,
+            children :[
+              {
+                path: ':bk-id',
+                component: AddBookmarkComponent,
+                canDeactivate:[UnsavedChangesGuard],
+              }
+            ]
+          }
+        ]
       },
     ]
   },

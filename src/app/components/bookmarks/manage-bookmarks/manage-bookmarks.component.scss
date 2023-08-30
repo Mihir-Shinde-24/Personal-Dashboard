@@ -1,0 +1,85 @@
+.manage-bookmarks-wrapper {
+  height: 100%;
+  display: flex;
+  overflow: auto;
+}
+
+.sidebar {
+  height: 100%;
+  width: 220px;
+  background-color: rgba(black,0.7);
+  backdrop-filter: blur(8px);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  overflow-y: auto;
+}
+
+.content {
+  flex-grow: 1;
+  height: 100%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow: auto;
+
+}
+
+.sidebar-heading{
+  color: rgba(white,0.8);
+  font-weight: 600;
+  font-size: 20px;
+  padding: 25px;
+
+}
+
+.sidebar-item{
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  padding: 5px 25px;
+
+  &:hover{
+    color: rgba(white,0.85)
+  }
+
+  &.selected{
+    color: rgba(white,1);
+    font-weight: 500;
+  }
+}
+
+
+.sidebar-item{
+  color: rgba(white,0.78);
+  padding: 5px 25px;
+  position: relative;
+}
+
+.sidebar-item::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 4px;
+  background-color: rgba(white,0.8);
+
+  transition: all 0.3s;
+  transform: scaleY(0);
+  opacity: 0; //hide by default
+}
+.sidebar-item.selected::before{
+  opacity: 1;
+  transform: scaleY(1);
+}
+app-add-bookmark{
+  display: block;
+  height: 100%;
+}
+.edit-bookmark-wrapper{
+  padding: 35px;
+  border-radius: 5px;
+  max-height: 100%;
+  overflow: auto;
+}
+
+

@@ -15,6 +15,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { TodoItemComponent } from './components/todos/todo-item/todo-item.component';
 import { AddTodoComponent } from './components/todos/add-todo/add-todo.component';
 import { AddBookmarkComponent } from './components/bookmarks/add-bookmark/add-bookmark.component';
+import { ManageBookmarksComponent } from './components/bookmarks/manage-bookmarks/manage-bookmarks.component';
+import { NotificationComponent } from './components/utility-components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AddBookmarkComponent } from './components/bookmarks/add-bookmark/add-bo
     NoteCardComponent,
     TodoItemComponent,
     AddTodoComponent,
-    AddBookmarkComponent
+    AddBookmarkComponent,
+    ManageBookmarksComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

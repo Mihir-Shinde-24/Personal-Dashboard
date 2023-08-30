@@ -6,6 +6,7 @@ import {TodoService} from "../../../shared/services/todo.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {IDeactivateComponent} from "../../../shared/interfaces/IDeactivateComponent";
 import {Observable} from "rxjs";
+import {NotificationService} from "../../../shared/services/utility-service/notification.service";
 
 @Component({
   selector: 'app-add-todo',
@@ -17,7 +18,7 @@ export class AddTodoComponent implements  OnInit,IDeactivateComponent{
   id!:string;
   addTodoReactiveForm!:FormGroup;
 
-  constructor(private fb: FormBuilder, private todoService:TodoService, private router:Router,private activatedRoute:ActivatedRoute) {}
+  constructor(private notificationService:NotificationService, private fb: FormBuilder, private todoService:TodoService, private router:Router,private activatedRoute:ActivatedRoute) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -60,9 +61,11 @@ export class AddTodoComponent implements  OnInit,IDeactivateComponent{
         const todo = new Todo(this.addTodoReactiveForm.value.text);
         console.log(todo);
         this.todoService.add(todo);
+        this.notificationService.show("New Todo created!")
       }
       else{
         this.todoService.update(this.id,this.addTodoReactiveForm.value);
+        this.notificationService.show("Todo updated!")
       }
       this.addTodoReactiveForm.reset();
       this.router.navigateByUrl('/todos');

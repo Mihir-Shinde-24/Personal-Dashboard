@@ -9,4 +9,5 @@ import {Bookmark} from "../../../shared/models/bookmark.model";
 export class BookmarkTileComponent {
 
   @Input('bookmark') bookmark!:Bookmark;
+  faviconError=false;
 }
