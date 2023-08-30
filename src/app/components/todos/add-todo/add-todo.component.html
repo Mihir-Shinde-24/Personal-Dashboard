@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="add-todos-wrapper has-blurred-white-bg">
+        <h2 class="is-bold">{{ idControl?.value ? 'Edit': 'New'}} Todo</h2>
+        <form (ngSubmit)="onFormSubmit()" [formGroup]="addTodoReactiveForm">
+            <div class="form-field">
+                <input class="textbox" type="text" placeholder="Enter Todo text..." formControlName="text">
+                <p *ngIf="textControl?.touched && (textControl?.hasError('required') || textControl?.hasError('containSpace') ) ">Please enter valid Todo text</p>
+                <p *ngIf="textControl?.touched && textControl?.hasError('minlength')">The Todo text must be at least 3 characters*</p>
+            </div>
+
+            <div class="btns-container ">
+                <a class="btn" [routerLink]="'/todos'">Cancel</a>
+                <button type="submit" class="btn align-end">{{ idControl?.value ? 'Update': 'Create'}}</button>
+            </div>
+        </form>
+    </div>
+</div>

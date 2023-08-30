@@ -1,0 +1,9 @@
+<div class="bookmark-tile">
+  <div class="tile-icon"  *ngIf="!faviconError">
+    <img [src]="'https://www.google.com/s2/favicons?domain='+bookmark.url.origin+'&sz=128'" alt="" (error)="faviconError=true">
+  </div>
+  <div class="tile-icon fallback" *ngIf="faviconError">
+    {{ bookmark.name[0].toUpperCase() }}
+  </div>
+  <p class="tile-text">{{ bookmark.name}}</p>
+</div>
