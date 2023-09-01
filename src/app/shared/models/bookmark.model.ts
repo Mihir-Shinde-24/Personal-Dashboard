@@ -13,12 +13,5 @@ export class Bookmark{
         }else{
           this.name = name;
         }
-
-
-
-
     }
-
-
-
 }

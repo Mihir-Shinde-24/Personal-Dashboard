@@ -17,6 +17,7 @@ import { AddTodoComponent } from './components/todos/add-todo/add-todo.component
 import { AddBookmarkComponent } from './components/bookmarks/add-bookmark/add-bookmark.component';
 import { ManageBookmarksComponent } from './components/bookmarks/manage-bookmarks/manage-bookmarks.component';
 import { NotificationComponent } from './components/utility-components/notification/notification.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { NotificationComponent } from './components/utility-components/notificat
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

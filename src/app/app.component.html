@@ -1,8 +1,17 @@
 <div class="app-wrapper">
 
+  <img [src]="bgImg?bgImg:fallBackBgImg" alt="" class="bg-img" @bgImgAnim *ngIf="bgImg" (error)="setFallBackImg()">
+
+  <div class="btn change-bg-btn" (click)="changeBGImage()" *ngIf="!loadingBG">
+    <i class="material-icons">refresh</i>
+  </div>
+  <div class="btn change-bg-btn rotate-btn" *ngIf="loadingBG">
+    <i class="material-icons rotate-icon">refresh</i>
+  </div>
+
   <div class="top-section">
-    <h1>19:00</h1>
-    <h2>1 January 2020</h2>
+    <h1>{{ dateTime | async | date:'HH:mm' }}</h1>
+    <h2>{{ dateTime | async | date:'d MMMM y' }}</h2>
   </div>
 
   <div class="content-section" [@routeAnim]="prepareRoute(outlet)">

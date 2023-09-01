@@ -63,8 +63,10 @@ export class AddBookmarkComponent implements IDeactivateComponent, OnInit {
         this.addBookmarkReactiveForm.reset();
         this.notificationService.show("New Bookmark added!")
       } else {
+        this.urlControl?.setValue(new URL(this.urlControl?.value));
         this.bookmarkService.update(this.id, this.addBookmarkReactiveForm.value);
         this.notificationService.show("Bookmark updated!")
+        this.addBookmarkReactiveForm.markAsUntouched();
       }
 
     }
