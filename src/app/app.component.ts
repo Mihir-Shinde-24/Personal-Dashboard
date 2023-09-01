@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RouterOutlet} from "@angular/router";
 import {animate, group, query, style, transition, trigger} from "@angular/animations";
 import {HttpClient} from "@angular/common/http";
+import {map, Observable, Subscription, timer} from "rxjs";
 
 
 const baseStyles =  style({
@@ -173,15 +174,22 @@ export class AppComponent implements OnDestroy, OnInit {
     loadingBG: boolean = false;
     timeout: any;
     key: string = 'background';
+    dateTime!:Observable<Date>;
 
-    constructor(private http: HttpClient) {
-    }
+    constructor(private http: HttpClient) { }
 
     ngOnInit(): void {
+        this.initializeDateTime();
         this.fetchBgFromLocalStorage();
         this.saveBgToLocalStorage();
     }
-
+    initializeDateTime(){
+      this.dateTime = timer(0,1000).pipe(
+        map(()=> {
+          return new Date;
+        })
+      )
+    }
     fetchBgFromLocalStorage() {
         try {
             const str = localStorage.getItem(this.key);
@@ -204,7 +212,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
     changeBGImage() {
         this.loadingBG = true;
-        this.http.head('https://source.unsplash.com/random/2560x1440', {observe: "response"}).subscribe((head) => {
+        this.http.head('https://source.unsplash.com/random/1920x1080', {observe: "response"}).subscribe((head) => {
             console.log(head)
             if (head.status == 200 && head.statusText === "OK" && head.ok) {
                 this.bgImg = null;
