@@ -1,0 +1,88 @@
+// Colours
+$lightest-purple: #e1e2ed;
+$lightest-gray: #f5f5f5;
+$white: white;
+
+.app-wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bg-img{
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.top-section{
+  //background-color: aquamarine;
+  text-align: center;
+  padding: 100px 0;
+
+  h1{
+    font-size: 120px;
+    font-weight: bold;
+    color: $lightest-gray;
+    text-shadow: 0 1px 7px rgba(black,0.1);
+  }
+
+  h2{
+    font-size: 28px;
+    color: $white;
+    text-shadow: 0 1px 4px rgba(black,0.1);
+  }
+}
+
+.content-section{
+  //position: relative;
+  flex-grow: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.bottom-section{
+  display: flex;
+
+  app-tabs{
+    margin: auto;
+  }
+}
+
+.change-bg-btn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  background: rgba(black,0.18);
+  color: rgba(white,0.7);
+  transition: all 0.2s;
+
+  &:hover{
+    background: rgba(black,0.3);
+    color: white;
+  }
+
+  &:active{
+    transform: translateY(1px) ;
+  }
+}
+.rotate-btn{
+  cursor: default ;
+}
+
+.rotate-icon {
+  display: block;
+  animation: rotate 1.1s infinite ease-in-out;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

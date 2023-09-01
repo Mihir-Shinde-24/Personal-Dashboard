@@ -1,0 +1,24 @@
+<div class="manage-bookmarks-wrapper container ">
+  <div class="sidebar">
+    <p class="sidebar-heading">Your Bookmarks</p>
+
+    <div class="side-items">
+      <a [routerLink]="['/bookmarks/manage',bookmark.id]"
+         class="sidebar-item"
+         [routerLinkActive]="'selected'"
+         *ngFor="let bookmark of bookmarks"
+      >{{ bookmark.name }} </a>
+      <a class="sidebar-item" *ngIf="bookmarks.length===0">No Records found</a>
+    </div>
+  </div>
+
+  <div class="content has-blurred-white-bg">
+    <div class="edit-bookmark-wrapper" *ngIf="!isBmSelected && bookmarks.length>0">
+      <h2 class="is-bold" >Select a Bookmark</h2>
+    </div>
+    <div class="edit-bookmark-wrapper" *ngIf="bookmarks.length===0">
+      <h2 class="is-bold" >Your Bookmarks are Empty</h2>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
