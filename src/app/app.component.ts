@@ -3,6 +3,17 @@ import {RouterOutlet} from "@angular/router";
 import {animate, group, query, style, transition, trigger} from "@angular/animations";
 import {HttpClient} from "@angular/common/http";
 
+
+const baseStyles =  style({
+  display: 'block',
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  width: '100%',
+  height: '100%',
+  overflow: 'hidden'
+})
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -15,15 +26,7 @@ import {HttpClient} from "@angular/common/http";
                     overflow: 'hidden'
                 }),
                 query(':enter,:leave', [
-                    style({
-                        display: 'block',
-                        position: 'absolute',
-                        top: '0',
-                        left: '0',
-                        width: '100%',
-                        height: '100%',
-                        overflow: 'hidden'
-                    })
+                   baseStyles
                 ], {optional: true}),
 
                 group([
@@ -56,15 +59,7 @@ import {HttpClient} from "@angular/common/http";
                     overflow: 'hidden'
                 }),
                 query(':enter,:leave', [
-                    style({
-                        display: 'block',
-                        position: 'absolute',
-                        top: '0',
-                        left: '0',
-                        width: '100%',
-                        height: '100%',
-                        overflow: 'hidden'
-                    })
+                    baseStyles
                 ], {optional: true}),
 
                 group([
@@ -88,8 +83,68 @@ import {HttpClient} from "@angular/common/http";
                         }))
                     ], {optional: true})
                 ])
+            ]),
+          transition('* => secondary',[
+            style({
+              position: 'relative',
+            }),
+            query(':enter,:leave', [
+              baseStyles
+            ], {optional: true}),
 
+            group([
+              //Leaving element
+              query(':leave', [
+                animate('200ms ease-in', style({
+                  opacity: '0',
+                  transform: 'scale(0.8)',
+                }))
+              ], {optional: true}),
+
+              // Slow show Entering element
+              query(':enter', [
+                style({
+                  opacity: '0',
+                  transform: 'scale(1.2)'
+                }),
+                animate('250ms 120ms ease-out', style({
+                  opacity: '1',
+                  transform: 'scale(1)'
+                }))
+              ], {optional: true})
             ])
+          ]),
+
+          transition('secondary => *',[
+            style({
+              position: 'relative',
+            }),
+            query(':enter,:leave', [
+              baseStyles
+            ], {optional: true}),
+
+            group([
+              //Leaving element
+              query(':leave', [
+                animate('200ms ease-in', style({
+                  opacity: '0',
+                  transform: 'scale(1.2)',
+                }))
+              ], {optional: true}),
+
+              // Slow show Entering element
+              query(':enter', [
+                style({
+                  opacity: '0',
+                  transform: 'scale(0.8)'
+                }),
+                animate('250ms 120ms ease-out', style({
+                  opacity: '1',
+                  transform: 'scale(1)'
+                }))
+              ], {optional: true})
+            ])
+          ])
         ]),
         trigger('bgImgAnim', [
             transition(':leave', [
@@ -140,7 +195,7 @@ export class AppComponent implements OnDestroy, OnInit {
     }
 
     prepareRoute(outlet: RouterOutlet) {
-        return outlet.isActivated ? outlet.activatedRouteData['tab'] : null;
+        return outlet.isActivated &&  outlet.activatedRouteData['tab'] ? outlet.activatedRouteData['tab'] : 'secondary';
     }
 
     saveBgToLocalStorage() {

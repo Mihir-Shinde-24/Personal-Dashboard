@@ -38,14 +38,12 @@ $white: white;
 
 .content-section{
   //position: relative;
-  //background-color: cadetblue;
   flex-grow: 1;
   min-height: 0;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .bottom-section{
-  //background-color: coral;
   display: flex;
 
   app-tabs{
